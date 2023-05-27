@@ -12,13 +12,14 @@ const app = express();
 //middlewares
 app.use("/posts", postRoutes);
 
+
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
 
 //mongodb connection
 mongoose
-  .connect(process.env.CONNECTION_URL)
+  .connect(process.env.MONGO_URL)
   .then(() => console.log("connected"))
   .catch(() => console.log("No connection"));
 
